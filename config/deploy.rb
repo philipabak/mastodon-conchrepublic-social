@@ -2,8 +2,8 @@
 
 lock '3.17.1'
 
-set :repo_url, ENV.fetch('REPO', 'https://github.com/mastodon/mastodon.git')
-set :branch, ENV.fetch('BRANCH', 'main')
+set :repo_url, ENV.fetch('REPO', 'mastodon@conchrepublic.social:repos/mastodon')
+set :branch, ENV.fetch('BRANCH', 'master')
 
 set :application, 'mastodon'
 set :rbenv_type, :user
@@ -11,7 +11,7 @@ set :rbenv_ruby, File.read('.ruby-version').strip
 set :migration_role, :app
 
 append :linked_files, '.env.production', 'public/robots.txt'
-append :linked_dirs, 'vendor/bundle', 'node_modules', 'public/system'
+append :linked_dirs, 'vendor/bundle', 'public/system'#, 'node_modules'
 
 namespace :systemd do
   %i[sidekiq streaming web].each do |service|
