@@ -11,7 +11,7 @@ set :rbenv_ruby, File.read('.ruby-version').strip
 set :migration_role, :app
 
 append :linked_files, '.env.production', 'public/robots.txt'
-append :linked_dirs, 'vendor/bundle', 'public/system'#, 'node_modules'
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "vendor/bundle", "storage"
 
 namespace :systemd do
   %i[sidekiq streaming web].each do |service|
